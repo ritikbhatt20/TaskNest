@@ -16,8 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from api.models import TaskResource
+
+task_resource = TaskResource()
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('tasks.urls'))
+    path('', include('tasks.urls')),
+    path('api/', include(task_resource.urls))
 ]
